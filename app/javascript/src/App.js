@@ -1,7 +1,16 @@
-import React from 'react'
+import React from "react";
+import { Graph } from "./Graph";
+import { Header } from "./Header";
+import { Footer } from "./Footer";
 
-export function App () {
+export function App() {
   return (
-    <div>Hello World!</div>
-  )
+    <div className="Wrapper">
+      < Header />
+      <div className="graph-wrapper">
+        <Graph />
+      </div>
+      < Footer />
+    </div>
+  );
 }
