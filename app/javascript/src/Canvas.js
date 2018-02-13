@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { Semicircle } from './Semicircle'
 
-export class Canvas extends Component {
+class Canvas extends Component {
   constructor(props) {
     super(props);
     this.state = { arcNumber: 0 };
@@ -43,4 +43,6 @@ export class Canvas extends Component {
     )
   }
 }
+
+export Canvas
 

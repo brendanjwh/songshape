@@ -6,19 +6,17 @@ import { Footer } from "./Footer"
 import { Canvas } from "./Canvas"
 import { Button } from "./Button"
 
-export function App() {
+function App() {
   return (
     <div className="Wrapper">
       <Header />
       <div className="graph-wrapper">
-        <Canvas  
-          name="test"
-        />
+        <Canvas name="test" />
         <Graph />
       </div>
       <Footer />
       <div>
-        <button>Add Part</button>
+        <Button label='Create Arc' />
       </div>
       <div>
         <button>Remove Part</button>
@@ -26,3 +24,5 @@ export function App() {
     </div>
   )
 }
+
+export App

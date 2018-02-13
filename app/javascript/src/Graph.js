@@ -1,8 +1,10 @@
 import React from 'react'
 import { render } from 'react-dom'
 
-export function Graph () {
+function Graph () {
   return (
     <div className="graph">Graph</div>
   )
 }
+
+export Graph
