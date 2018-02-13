@@ -1,4 +1,4 @@
-{   
+{
   "scripts": {
     "start": "./bin/webpack-dev-server"
   },
@@ -9,8 +9,9 @@
     "react-dom": "^16.2.0"
   },
   "devDependencies": {
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
-    "webpack-dev-server": "^2.10.1"
+    "webpack-dev-server": "^2.11.1"
   }
 }
