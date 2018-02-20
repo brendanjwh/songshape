@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { Semicircle } from './Semicircle'
 
-class Canvas extends Component {
+export class Canvas extends Component {
   constructor(props) {
     super(props);
-    this.state = { arcNumber: 0 };
-
+    this.state = { 
+      arcNumber: 0
+    }
     // setArcs(() => {
     //   this.setState{ arcNumber}
     // })
@@ -19,10 +20,13 @@ class Canvas extends Component {
 
     // })
   }
+
   // to save canvas
   // const dataURL = canvas.toDataURL()
 
   componentDidMount() {
+    // var arc = {this.state.arcNumber};
+    // console.log("canvas arc number: + " arc);
     const canvas = this.refs.canvas
     const ctx = canvas.getContext("2d")
     const img = this.refs.image
@@ -36,13 +40,10 @@ class Canvas extends Component {
   render() {
     return(
       <div>
-        <canvas ref="canvas" width={640} height={425} />
-        <img ref="image"  display="none" className="hidden" />
-        <Semicircle />
+        <canvas ref="canvas" width={640} height={425}/>
+          <Semicircle />
+          <img ref="image"  display="none" className="hidden" />
       </div>
     )
   }
 }
-
-export Canvas
-

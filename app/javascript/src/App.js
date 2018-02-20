@@ -6,23 +6,35 @@ import { Footer } from "./Footer"
 import { Canvas } from "./Canvas"
 import { Button } from "./Button"
 
-function App() {
-  return (
-    <div className="Wrapper">
-      <Header />
-      <div className="graph-wrapper">
-        <Canvas name="test" />
-        <Graph />
+export class App extends Component {
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+      arcNumber: 0
+    };
+  }
+
+  componentDidMount() {
+    console.log(this.state.arcNumber);
+  }
+
+  render() {
+    return (
+      <div className="Wrapper">
+        <Header />
+        <div className="graph-wrapper">
+          <Canvas name="test" arcNumber={this.state.arcNumber}>
+          </Canvas>
+          <Graph />
+        </div>
+        <Footer />
+        <div>
+          <Button label='Create Arc' onClick={() => this.setState({arcNumber: arcNumber + 1}) } />
+          <Button label='Destroy Arc' onClick={() => console.log("this.arcNumber")} />
+        </div>
       </div>
-      <Footer />
-      <div>
-        <Button label='Create Arc' />
-      </div>
-      <div>
-        <button>Remove Part</button>
-      </div>
-    </div>
-  )
+    )
+  }
 }
 
-export App

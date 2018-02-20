@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
-class Semicircle extends Component {
+export class Semicircle extends Component {
   constructor(props) {
     super(props);
   }
@@ -20,5 +20,3 @@ class Semicircle extends Component {
       )
   }
 }
-
-export Semicircle 
