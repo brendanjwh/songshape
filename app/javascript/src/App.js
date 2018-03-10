@@ -23,11 +23,8 @@ export class App extends Component {
     return (
       <div className="Wrapper">
         <Header />
-        <div className="graph-wrapper">
-          <Canvas name="test" arcNumber={this.state.arcNumber}>
-          </Canvas>
-          <Graph />
-        </div>
+        <Canvas name="test" arcNumber={this.state.arcNumber} />
+        <Graph />
         <Footer />
         <div>
           <Button label='Create Arc' onClick={() => this.setState({arcNumber: arcNumber + 1}) } />

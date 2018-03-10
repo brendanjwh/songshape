@@ -39,7 +39,7 @@ export class Canvas extends Component {
 
   render() {
     return(
-      <div>
+      <div className="graph-wrapper">
         <canvas ref="canvas" width={640} height={425}/>
           <Semicircle />
           <img ref="image"  display="none" className="hidden" />
