@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Canvas } from './Canvas'
 
 var buttonStyle = {
   margin: '10px 10px 10px 0'

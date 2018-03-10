@@ -1,22 +1,27 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import { Arc } from 'react-konva'
+import Konva from 'konva'
 
 export class Semicircle extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount() {
-    var semicircle = this.refs.semicircle;
-    var ctx = semicircle.getContext("2d");
-    ctx.beginPath();
-    ctx.arc(100, 75, 50, 1*Math.PI, 0);
-    ctx.stroke();
+  state = {
+    color: 'green'
   }
 
   render() {
     return (
-      <canvas ref="semicircle" width="300" height="150"></canvas>
-      )
+      <Arc
+        x={200}
+        y={200}
+        innerRadius={80}
+        outerRadius={100}
+        angle={-180}
+        fill={this.state.color}
+        clockwise={true}
+        draggable={true}
+        scaleX={1.5}
+        scaleY={1.5}
+      />
+    );
   }
 }
