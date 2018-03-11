@@ -11,32 +11,42 @@ export class Wrapper extends Component {
     this.addArc = this.addArc.bind(this);
     this.removeArc = this.removeArc.bind(this);
     this.state = {
-      arcNumber: 0
+      arcNumber: [0]
     }
   }
   addArc = () => {
+    // var arcArray = this.state.arcNumber.concat(this.state.arcNumber.length);
+    console.log("arcArray: " + this.state.arcNumber.concat(this.state.arcNumber.length));
     this.setState((prevState) => {
-      return { arcNumber: prevState.arcNumber + 1 }
+      return { arcNumber: this.state.arcNumber.concat(this.state.arcNumber.length) }
+      console.log("new state: " + this.state.arcNumber.concat(this.state.arcNumber.length));
     });
-    console.log("Arc Number: " + this.state.arcNumber);
   }
   removeArc = () => {
+    // var arcArray = this.state.arcNumber.concat(this.state.arcNumber.length);
     this.setState((prevState) => {
-      if (prevState > 1) {
-        return { arcNumber: prevState.arcNumber - 1 }
+      console.log("prevState length: " + this.state.arcNumber.length);
+      if (this.state.arcNumber.length > 1) {
+        console.log("new state: " + this.state.arcNumber);
+        this.state.arcNumber.pop();
+        return { arcNumber: this.state.arcNumber }
       }
-      return { arcNumber: 0 };
+      console.log("new state: " + this.state.arcNumber);
+      return { arcNumber: [0] };
     });
-    console.log("Arc Number: " + this.state.arcNumber);
   }
   render() {
-    const arcNumber = this.state.arcNumber;
-    console.log("Arc Number: " + arcNumber);
+    console.log("state at rendering: " + this.state.arcNumber);
+
     return (
-      <div><h1>{this.arcNumber}</h1>
+      <div>
         <Stage width={window.innerWidth} height={(window.innerHeight)/2}>
           <Layer>
-            <Semicircle />
+
+
+                <Semicircle />
+            
+
           </Layer>
         </Stage>
         <div>
