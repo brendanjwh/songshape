@@ -11,7 +11,7 @@ export class Wrapper extends Component {
     this.addArc = this.addArc.bind(this);
     this.removeArc = this.removeArc.bind(this);
     this.state = {
-      arcNumber: [0]
+      arcNumber: []
     }
   }
   addArc = () => {
@@ -21,12 +21,15 @@ export class Wrapper extends Component {
   }
   removeArc = () => {
     this.setState((prevState) => {
-      if (this.state.arcNumber.length > 1) {
+      if (this.state.arcNumber.length > 0) {
         this.state.arcNumber.pop();
         return { arcNumber: this.state.arcNumber }
       }
-      return { arcNumber: [0] };
+      return { arcNumber: [] };
     });
+  }
+  menuArc = () => {
+    console.log("Menu!");
   }
   render() {
     var arcs = this.state.arcNumber;
@@ -35,8 +38,8 @@ export class Wrapper extends Component {
       <div>
         <Stage width={window.innerWidth} height={(window.innerHeight)/2}>
           <Layer>
-            {arcs.map((arc) => (
-              <Semicircle arc={arc} />
+            {arcs.map((arc, i) => (
+              <Semicircle arc={arc} key={i} onClick={ this.menuArc } />
             ))}
           </Layer>
         </Stage>
