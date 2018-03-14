@@ -4,12 +4,15 @@ import { Semicircle } from "./Semicircle"
 import { Button } from "./Button"
 import { Stage, Layer } from 'react-konva'
 import Konva from 'konva';
+import { SketchPicker } from 'react-color'
 
 export class Wrapper extends Component {
   constructor(props) {
     super(props);
     this.addArc = this.addArc.bind(this);
     this.removeArc = this.removeArc.bind(this);
+    this.onClick = this.onClick.bind(this);
+    this.hoverArc = this.hoverArc.bind(this);
     this.state = {
       arcNumber: []
     }
@@ -28,9 +31,16 @@ export class Wrapper extends Component {
       return { arcNumber: [] };
     });
   }
-  menuArc = () => {
+
+  onClick = (id) => {
     console.log("Menu!");
+    console.log("Id: " + id);
   }
+
+  hoverArc = () => {
+    document.body.style.cursor = 'pointer';
+  }
+
   render() {
     var arcs = this.state.arcNumber;
 
@@ -39,7 +49,7 @@ export class Wrapper extends Component {
         <Stage width={window.innerWidth} height={(window.innerHeight)/2}>
           <Layer>
             {arcs.map((arc, i) => (
-              <Semicircle arc={arc} key={i} onClick={ this.menuArc } />
+              <Semicircle arc={arc} key={i} click={this.onClick} id={i} onHover={this.hoverArc} />
             ))}
           </Layer>
         </Stage>

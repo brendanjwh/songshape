@@ -4,9 +4,24 @@ import { Arc } from 'react-konva'
 import Konva from 'konva'
 
 export class Semicircle extends Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+    // this.hoverArc = this.props.hoverArc.bind(this);
+  }
   state = {
     color: 'green'
   }
+
+  handleClick = () => {
+    this.props.click(this.props.id)
+    console.log("Menu!");
+    console.log("Id: " + id);
+  }
+
+  // hoverArc = (e) => {
+  //   this.props.hover
+  // }
 
   render() {
     return (
@@ -21,6 +36,9 @@ export class Semicircle extends Component {
         draggable={true}
         scaleX={1.5}
         scaleY={1.5}
+
+        onClick={this.handleClick}
+        // onHover={this.hoverArc.bind(this)}
       />
     );
   }
