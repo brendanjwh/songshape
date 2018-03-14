@@ -15,38 +15,29 @@ export class Wrapper extends Component {
     }
   }
   addArc = () => {
-    // var arcArray = this.state.arcNumber.concat(this.state.arcNumber.length);
-    console.log("arcArray: " + this.state.arcNumber.concat(this.state.arcNumber.length));
     this.setState((prevState) => {
       return { arcNumber: this.state.arcNumber.concat(this.state.arcNumber.length) }
-      console.log("new state: " + this.state.arcNumber.concat(this.state.arcNumber.length));
     });
   }
   removeArc = () => {
-    // var arcArray = this.state.arcNumber.concat(this.state.arcNumber.length);
     this.setState((prevState) => {
-      console.log("prevState length: " + this.state.arcNumber.length);
       if (this.state.arcNumber.length > 1) {
-        console.log("new state: " + this.state.arcNumber);
         this.state.arcNumber.pop();
         return { arcNumber: this.state.arcNumber }
       }
-      console.log("new state: " + this.state.arcNumber);
       return { arcNumber: [0] };
     });
   }
   render() {
-    console.log("state at rendering: " + this.state.arcNumber);
+    var arcs = this.state.arcNumber;
 
     return (
       <div>
         <Stage width={window.innerWidth} height={(window.innerHeight)/2}>
           <Layer>
-
-
-                <Semicircle />
-            
-
+            {arcs.map((arc) => (
+              <Semicircle arc={arc} />
+            ))}
           </Layer>
         </Stage>
         <div>
