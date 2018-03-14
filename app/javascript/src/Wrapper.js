@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import { Semicircle } from "./Semicircle"
-import { Button } from "./Button"
+import { Semicircle } from './Semicircle'
+import { Button } from './Button'
+import { ColorPicker } from './ColorPicker'
 import { Stage, Layer } from 'react-konva'
 import Konva from 'konva';
 import { SketchPicker } from 'react-color'
@@ -11,15 +12,19 @@ export class Wrapper extends Component {
     super(props);
     this.addArc = this.addArc.bind(this);
     this.removeArc = this.removeArc.bind(this);
-    this.onClick = this.onClick.bind(this);
-    this.hoverArc = this.hoverArc.bind(this);
+    this.handleChangeComplete = this.handleChangeComplete.bind(this);
     this.state = {
-      arcNumber: []
+      arcNumber: [],
+      arcColor: ''
     }
   }
   addArc = () => {
     this.setState((prevState) => {
-      return { arcNumber: this.state.arcNumber.concat(this.state.arcNumber.length) }
+      console.log("color: " + this.state.arcColor);
+      return { 
+        arcNumber: this.state.arcNumber.concat(this.state.arcNumber.length),  
+        arcColor: this.state.arcColor
+      }
     });
   }
   removeArc = () => {
@@ -31,14 +36,9 @@ export class Wrapper extends Component {
       return { arcNumber: [] };
     });
   }
-
-  onClick = (id) => {
-    console.log("Menu!");
-    console.log("Id: " + id);
-  }
-
-  hoverArc = () => {
-    document.body.style.cursor = 'pointer';
+  handleChangeComplete = (color) => {
+    console.log("color change: " + color.hex);
+    this.setState({ arcColor: color.hex })
   }
 
   render() {
@@ -49,13 +49,14 @@ export class Wrapper extends Component {
         <Stage width={window.innerWidth} height={(window.innerHeight)/2}>
           <Layer>
             {arcs.map((arc, i) => (
-              <Semicircle arc={arc} key={i} click={this.onClick} id={i} onHover={this.hoverArc} />
+              <Semicircle arc={arc} key={i.toString()} value={arc} />
             ))}
           </Layer>
         </Stage>
         <div>
           <Button label='Create Arc' onClick={this.addArc} />
           <Button label='Destroy Arc' onClick={this.removeArc} />
+          <ColorPicker color={ this.state.background } onChangeComplete={ this.handleChangeComplete } />
         </div>
       </div>
     )

@@ -9,7 +9,8 @@
     "react-color": "^2.14.0",
     "react-dom": "^16.2.0",
     "react-konva": "^1.6.6",
-    "react-color": "^2.14.0"
+    "react-color": "^2.14.0",
+    "reactcss": "^1.2.3"
 
   },
   "devDependencies": {
